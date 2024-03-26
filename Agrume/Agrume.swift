@@ -53,6 +53,9 @@ public final class Agrume: UIViewController {
   /// Default tap behaviour is to dismiss the view if zoomed out
   public var tapBehavior: TapBehavior = .dismissIfZoomedOut
 
+  /// Optional custom UICollectionViewFlowLayout
+  public var collectionViewFlowLayout: UICollectionViewFlowLayout?
+  
   override public var preferredStatusBarStyle: UIStatusBarStyle {
     statusBarStyle ?? super.preferredStatusBarStyle
   }
@@ -260,7 +263,7 @@ public final class Agrume: UIViewController {
   private var _collectionView: UICollectionView?
   private var collectionView: UICollectionView {
     if _collectionView == nil {
-      let layout = UICollectionViewFlowLayout()
+      let layout = collectionViewFlowLayout ?? UICollectionViewFlowLayout()
       layout.minimumInteritemSpacing = 0
       layout.minimumLineSpacing = 0
       layout.scrollDirection = .horizontal
